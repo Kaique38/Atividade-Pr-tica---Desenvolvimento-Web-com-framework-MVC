@@ -1,0 +1,6 @@
+<h1>Categorias</h1>
+<p><a href="/categorias/novo">Nova categoria</a> | <a href="/produtos">Produtos</a></p>
+<ul><% categorias.forEach(categoria => { %>
+<li><strong><%= categoria.nome %></strong> — <a href="/produtos/categoria/<%= categoria.id %>">Ver produtos</a> — <a href="/categorias/<%= categoria.id %>/editar">Editar</a>
+<form action="/categorias/<%= categoria.id %>/deletar" method="POST" style="display:inline"><button type="submit">Excluir</button></form></li>
+<% }) %></ul>
