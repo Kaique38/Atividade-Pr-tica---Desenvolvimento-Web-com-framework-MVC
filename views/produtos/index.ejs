@@ -1,0 +1,54 @@
+<h1>Produtos</h1>
+
+<a href="/produtos/novo">Novo produto</a> | <a href="/categorias">Categorias</a>
+
+<form action="/produtos" method="GET">
+    <label for="busca">Pesquisar por nome:</label>
+    <input id="busca" type="search" name="busca" value="<%= typeof busca === 'undefined' ? '' : busca %>" placeholder="Ex.: mouse">
+    <button type="submit">Pesquisar</button>
+    <% if (typeof busca !== 'undefined' && busca) { %>
+        <a href="/produtos">Limpar busca</a>
+    <% } %>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Ações</th>
+    </tr>
+
+    <% if (produtos.length === 0) { %>
+        <tr><td colspan="5">Nenhum produto encontrado.</td></tr>
+    <% } %>
+
+    <% produtos.forEach(p => { %>
+
+        <tr>
+            <td><%= p.nome %></td>
+            <td><%= (p.categoria || p.Categorium || p.Categoria || {}).nome || 'Sem categoria' %></td>
+            <td><%= p.preco %></td>
+            <td><%= p.quantidade %></td>
+
+            <td>
+                <a href="/produtos/<%= p.id %>/editar">
+                    Editar
+                </a>
+
+                <form
+                    action="/produtos/<%= p.id %>/deletar"
+                    method="POST"
+                    style="display:inline"
+                >
+                    <button type="submit">
+                        Excluir
+                    </button>
+                </form>
+            </td>
+        </tr>
+
+    <% }) %>
+
+</table>

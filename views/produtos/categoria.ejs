@@ -1,0 +1,15 @@
+<h1>Categoria: <%= categoria.nome %></h1>
+
+<p><a href="/categorias">Voltar para categorias</a> | <a href="/produtos">Todos os produtos</a></p>
+
+<h2>Produtos</h2>
+
+<% if (produtos.length === 0) { %>
+    <p>Esta categoria ainda não possui produtos.</p>
+<% } else { %>
+    <ul>
+        <% produtos.forEach(produto => { %>
+            <li><%= produto.nome %></li>
+        <% }) %>
+    </ul>
+<% } %>
