@@ -1,0 +1,5 @@
+node_modules/
+bin.zip
+.env
+*.sqlite-shm
+*.sqlite-wal
